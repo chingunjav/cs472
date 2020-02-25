@@ -1,0 +1,28 @@
+.profile{
+    border-radius: 50%;
+    width: 200px;
+}
+
+fieldset{
+    border-color: #F8F8F8;
+    border-width: 1;
+    color: gray;
+}
+
+table {
+    width: 100%;   
+}
+
+td{
+    vertical-align: top;
+}
+ 
+a{
+    color: black;
+    text-decoration-color: lightsalmon
+}
+
+a:hover {
+    color: gray;
+    text-decoration: none;
+}
