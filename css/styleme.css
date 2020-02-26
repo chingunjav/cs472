@@ -1,5 +1,36 @@
-p {
-	color: brown;
+body {
+    background-color: #595647;
+    color: #f1f0de;
+}
+
+h1,h3{
+    color: rgb(156,201,253)
+}
+
+em{
+    color: yellow;
+    font-family: Verdana, Tahoma, 'Times New Roman', sans-serif;
+}
+
+span{
+    color: red
+}
+strong{
+    color: navy
 }
 
 
+
+a{
+    color: #c25d66;
+    text-decoration: underline;
+}
+
+a:hover{
+    color: yellow;
+}
+
+a:active{
+    color: green;
+    text-decoration: underline;
+}
