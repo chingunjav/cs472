@@ -1,0 +1,57 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+form{
+    width: 500px;
+    font-size: 18px;
+}
+
+fieldset{
+    border-radius: 8px;
+    border-style: outset;
+    background-color: #e0e0ff;
+}
+
+legend{
+    background-color: white;
+    border-style: outset;
+    border-width: 2px;
+}
+
+.type{
+    color: red;
+}
+span.copyright{
+    font-size: 11px;
+    color: black;
+}
+
+.button{
+    background-color: #ffaaaa;
+    font-weight: bold;
+    font-size: 20px;
+    border-style: outset;
+    border-width: 2px;
+}
+
+input{
+    height: 20px;
+    font-size: 15px;
+}
+
+td:first-child{
+    font-weight: bold ;
+}
+.small{
+    /* width: 70px; */
+    color: lightgrey;
+}
+
+.back{
+    color: red;
+    font-size: 12px;
+}
+
+a{
+    text-decoration: none;
+}
