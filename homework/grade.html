@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Retrieve Grade</title>
+    <link href="../css/grade.css" type="text/css" rel="stylesheet">
+</head>
+    <body>
+        <h1>Retrieve your grade</h1> 
+        <form action="http://mumstudents.org/params.php">
+        <fieldset><legend>Grade request form</legend>
+            <table>
+                <tr>
+                    <td>Name : </td>
+                    <td><input type="text" name="name"></td>
+                </tr>
+                <tr>
+                    <td>Student ID : </td>
+                    <td><input type="text" name="id"></td>
+                </tr>
+                <tr>
+                    <td>Course : </td>
+                    <td>
+                        <select name="course">
+                            <option value="WAP" selected>WAP</option>
+                            <option value="Big Data">Big Data</option>
+                            <option value="MPP">MPP</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Which entry?</td>
+                    <td>
+                        <label><input type="radio" name="entry" value="August">August</label>
+                        <label><input type="radio" name="entry" value="May">May</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="checkbox" name="confirm">I heriby that I will check my grade only.</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Get Grade!"></td>
+                </tr>
+            </table>
+        </fieldset>
+        </form>
+    </body>
+</html>

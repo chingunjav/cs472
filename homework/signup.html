@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup</title>
+    <link href="../css/nerdluv.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <img src="../img/nerdluv.png" alt="nertluvlogo"><br>
+    where meek geeks meet
+    <br>
+    <br>
+    <form>
+        <fieldset>
+            <legend>New User Signup:</legend>
+            <table>
+                <tr>
+                    <td style="width: 150px;">Name:</td>
+                    <td><input type="text" id="name" maxlength="16" size="16"/></td>
+                </tr>
+                <tr>
+                    <td>Gender:</td>
+                    <td><label><input type="radio" id="gen" name="gender"/>Male</label> <label><input type="radio" name="gender" checked/>Female</label></td>
+                </tr>
+                <tr>
+                    <td>Age:</td>
+                    <td><input type="text" class="small" maxlength="2" size="6"></td>
+                </tr>
+                <tr>
+                    <td>Personality type:</td>
+                    <td><input type="text" class="small" maxlength="4" size="6"/> (<a href="http://www.humanmetrics.com/cgi-win/JTypes2.asp" class="type" target="_blank">Don't know your type?</a>)</td>
+                </tr>
+                <tr>
+                    <td>Favorite OS:</td>
+                    <td>
+                        <select>
+                            <option value="linux">Linux</option>
+                            <option value="mac">Mac OS</option>
+                            <option value="windows" selected>Windows</option>
+                            <option value="other">Other...</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Seeking age:</td>
+                    <td><input type="text" class="small" value="min"/> to <input type="text" class="small" value="max"/></td>
+                </tr>
+                <tr>
+                    <td><button class="button">Sign Up</button></td>
+                    <td></td>
+                </tr>
+            </table>
+        </fieldset>
+    </form>
+    <br>
+    This page is for single nerds to meet and date each other! Type in your personal information and wait for the nerdly luv to begin! Thank you for using our site.
+    <br>
+    <br>
+    <hr>
+    <span class="copyright">Result and page (C) Copyright NerdLuv Inc.</span>
+    <br>
+    
+    <a href="../index.html" class="back">
+        <table>
+            <tr>
+                <td><img src="../img/back.gif" alt="backArrow"></td>
+                <td>Back to front page</td>
+            </tr>
+        </table>
+    </a>
+    
+    <footer>
+            <a href="https://validator.w3.org/check/referer">
+                <img src="http://mumstudents.org/cs472/2014-09/img/w3c-html.png" alt="html validator"/>
+            </a>
+            <a href="https://jigsaw.w3.org/css-validator/check/referer">
+                <img src="http://jigsaw.w3.org/css-validator/img/vcss" alt="Valid CSS!"/>
+            </a>
+    </footer>
+</body>
+</html>
