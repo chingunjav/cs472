@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jquery Quiz I</title>
+</head>
+
+<body>
+    <p style="font-weight:bold;">1. In jQuery terminology, what is the difference between the “jQuery function” and the
+        “jQuery object”?</p>
+    The jQuery function is the value of jQuery or of $. This is the function that creates jQuery objects and register
+    handlers to be invoked when the DOM is ready. It also serves jquery as namespace.
+    A JQuery object is an object returned by the jQuery function.
+
+    <p style="font-weight:bold;">
+        2. Write jQuery code to find all h1 elements that are children of a div element and make their bac
+        kground color red. Sample HTML:
+    </p>
+
+
+    <pre style="font-weight:bold;">
+
+            &lt;body&gt;
+                &lt;h1&gt;abc&lt;/h1&gt;&lt;br&gt;
+                &lt;div&gt;
+                    &lt;h1&gt;div-1&lt;/h1&gt;
+                    &lt;h1&gt;div-2&lt;/h1&gt;
+                &lt;/div&gt;
+                &lt;h1&gt;xyz&lt;/h1&gt;
+            &lt;/body&gt;
+     
+ </pre>
+
+    $(“div h1”).css(“background-color”, “red”);
+
+    <p style="font-weight:bold;">3. Use a jQuery method to insert the text "YES!" at the end of the &lt;p&gt; element.
+    </p>
+    <pre>
+
+    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+    
+    &lt;head&gt;
+    &lt;script&gt;
+    $(document).ready(function () {
+    $(“p”).append(“YES!”);
+    });
+    &lt;/script&gt;
+    &lt;/head&gt;
+    
+    &lt;body&gt;
+    &lt;p&gt;Is jQuery FUN or what? &lt;/p&gt;
+    &lt;/body&gt;
+    
+    &lt;/html&gt;
+</pre>
+
+
+
+    <br /> <br />
+    <a href="../index.html">Home</a>
+
+</body>
+
+</html>

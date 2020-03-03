@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JQuery III</title>
+</head>
+
+<body>
+ 
+   <p style="font-weight:bold;">
+        1. Find the text in the first paragraph (stripping out the html), then set the html of the last paragraph to show it
+        is just text (the red bold is gone).
+   </p>
+
+  <pre style="font-weight:bold;">
+       
+        &lt;!doctype html&gt;
+        &lt;html lang="en"&gt;
+    
+        &lt;head&gt;
+            &lt;meta charset="utf-8"&gt;
+            &lt;title&gt;text demo&lt;/title&gt;
+            &lt;style&gt;
+                p {
+                    color: blue;
+                    margin: 8px;
+                }
+    
+                span {
+                    color: red;
+                }
+            &lt;/style&gt;
+            &lt;script src="http://code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+        &lt;/head&gt;
+    
+        &lt;body&gt;
+            &lt;p&gt;&lt;span&gt;Test&lt;/span&gt; Paragraph.&lt;/p&gt;
+            &lt;p&gt;&lt;/p&gt;
+            &lt;script&gt;
+    &lt; !—INSERT YOUR JQUERY CODE HERE - - &gt;
+    
+      <pre style="font-weight:normal;">
+                        $(document).ready(function () {
+                            $("body p:nth-child(2)").text($("body p:first-child").text());
+                        });
+      </pre>
+    
+            &lt;/script&gt;
+        &lt;/body&gt;
+    
+        &lt;/html&gt;
+  </pre>
+
+    <p style="font-weight:bold;">2. Write jQuery code to create a red background for the level-2 list items.</p>
+  <pre style="font-weight:bold;">
+        &lt;ul class="level-1"&gt;
+            &lt;li class="item-i"&gt;I&lt;/li&gt;
+            &lt;li class="item-ii"&gt;II
+                &lt;ul class="level-2"&gt;
+                    &lt;li class="item-a"&gt;A&lt;/li&gt;
+                    &lt;li class="item-b"&gt;B
+                        &lt;ul class="level-3"&gt;
+                            &lt;li class="item-1"&gt;1&lt;/li&gt;
+                            &lt;li class="item-2"&gt;2&lt;/li&gt;
+                            &lt;li class="item-3"&gt;3&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li class="item-c"&gt;C&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
+            &lt;li class="item-iii"&gt;III&lt;/li&gt;
+        &lt;/ul&gt;
+    
+    
+       <pre style="font-weight:normal;">
+            &lt;script&gt;
+                $(document).ready(function () {
+                    $("ul.level-2 &gt; li").css("background-color", "red");
+                    $("ul.level-3").css("background-color", "white");
+                });
+            &lt;/script&gt;
+       </pre>
+  </pre>
+
+
+   <p style="font-weight:bold;">
+        3. Write jQuery code to select the element that comes immediately before item three and change its background color
+        to blue.
+   </p>
+ <pre style="font-weight:bold;">
+        &lt;ul&gt;
+            &lt;li&gt;list item 1&lt;/li&gt;
+            &lt;li&gt;list item 2&lt;/li&gt;
+            &lt;li class="third-item"&gt;list item 3&lt;/li&gt;
+            &lt;li&gt;list item 4&lt;/li&gt;
+            &lt;li&gt;list item 5&lt;/li&gt;
+        &lt;/ul&gt;
+   <pre style="font-weight:normal;">
+            &lt;script&gt;
+                $(document).ready(function () {
+                    $(".third-item").prev().css("background-color", "blue");
+                });
+            &lt;/script&gt;
+   </pre>
+ </pre>
+
+   <p style="font-weight:bold;">
+        4. Let us one additional requirement for the "Go Vegetarian" button of the Webville Eatery Menu described in Chapter
+        4 of Head First jQuery: "Turkey" in the ingredient list of any entree is replaced by ”Mashed Potatoes" in the
+        vegetarian version. You may assume there is a class "turkey" that identifies these items in the list. Describe the
+        changes to the Javascript (jQuery) code to implement this new requirement.
+   </p>
+    $(“.turkey”).replaceWith(“&lt;li class=’mashed-potatoes’&gt;Mashed Potatoes&lt;/li&gt;”);
+
+    <p style="font-weight:bold;">
+        5. Write Javascript (jQuery) code to change the color of the parent and grandparent list items of the span of text
+        ("some text") in the following to green.
+    </p>
+   <pre style="font-weight:bold;">
+        &lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+    
+        &lt;head&gt;
+          <pre style="font-weight:normal;">
+                &lt;script&gt;
+                    $(document).ready(function () {
+        &lt; !—INSERT YOUR JQUERY CODE HERE - - &gt;
+        
+                            $(".ancestors span").parent().parent().css("color", "red");            
+                    });
+                &lt;/script&gt;
+          </pre>
+        &lt;/head&gt;
+    
+        &lt;body&gt;
+            &lt;div class="ancestors"&gt;
+                &lt;div&gt; (great-grandparent)
+                    &lt;ul&gt; (grandparent)
+                        &lt;li&gt; (direct parent)
+                            &lt;span&gt;some text&lt;/span&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/body&gt;
+    
+        &lt;/html&gt;
+   </pre>
+
+   <br />  <br />
+
+   <a href="../index.html">Home</a>
+
+</body>
+
+</html>
