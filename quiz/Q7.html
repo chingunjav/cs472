@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <h3 id="javascript-module-exercises">Javascript Module Exercises</h3>
+    <ol>
+    <li>Determine what this Javascript code will print out (without running it):</li>
+    </ol>
+    <pre class="hljs"><code><div>x = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">var</span> a = <span class="hljs-number">5</span>;
+    <span class="hljs-keyword">var</span> b = <span class="hljs-number">10</span>;
+    <span class="hljs-keyword">var</span> c = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a, b, c</span>) </span>{
+                <span class="hljs-built_in">document</span>.write(x); <span class="hljs-comment">// 1</span>
+                <span class="hljs-built_in">document</span>.write(a); <span class="hljs-comment">// 8</span>
+                <span class="hljs-keyword">var</span> f = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a, b, c</span>) </span>{ <span class="hljs-comment">// 8, 9, 10</span>
+                    b = a; <span class="hljs-comment">// b = 8</span>
+                    <span class="hljs-built_in">document</span>.write(b);
+                    b = c; <span class="hljs-comment">// b = 10</span>
+                    <span class="hljs-keyword">var</span> x = <span class="hljs-number">5</span>;
+                }
+                f(a,b,c); <span class="hljs-comment">// 8,9,10</span>
+                <span class="hljs-built_in">document</span>.write(b); <span class="hljs-comment">// 10</span>
+                <span class="hljs-keyword">var</span> x = <span class="hljs-number">10</span>;
+    }
+    c(<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>);
+    <span class="hljs-built_in">document</span>.write(b);
+    <span class="hljs-built_in">document</span>.write(x);
+    </div></code></pre>
+    <pre class="hljs"><code><div>-- Answer
+    Print -- x -- 1
+    Print -- a -- 8
+    Print -- b -- 8
+    Print -- b -- 10
+    Print -- b -- 10
+    Print -- x -- 10
+    </div></code></pre>
+    <ol start="2">
+    <li>Define Global Scope and Local Scope in Javascript.</li>
+    </ol>
+    <pre class="hljs"><code><div>-- Answer
+    A variable declared outside a function, becomes GLOBAL.
+    A global variable has global scope: All scripts and functions on a web page can access it.
+    ----
+    Variables declared within a JavaScript function, become LOCAL to the function.
+    Local variables have Function scope: They can only be accessed from within the function.
+    </div></code></pre>
+    <ol start="3">
+    <li>Consider the following structure of Javascript code:</li>
+    </ol>
+    <pre class="hljs"><code><div><span class="hljs-comment">// Scope A</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">XFunc</span> (<span class="hljs-params"></span>) </span>{
+        <span class="hljs-comment">// Scope B</span>
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">YFunc</span> (<span class="hljs-params"></span>) </span>{
+            <span class="hljs-comment">// Scope C</span>
+        };
+    };
+    (a) Do statements <span class="hljs-keyword">in</span> Scope A have access to variables defined <span class="hljs-keyword">in</span> Scope B and C? NO
+    (b) Do statements <span class="hljs-keyword">in</span> Scope B have access to variables defined <span class="hljs-keyword">in</span> Scope A? YES
+    (c) Do statements <span class="hljs-keyword">in</span> Scope B have access to variables defined <span class="hljs-keyword">in</span> Scope C? NO
+    (d) Do statements <span class="hljs-keyword">in</span> Scope C have access to variables defined <span class="hljs-keyword">in</span> Scope A? YES
+    (e) Do statements <span class="hljs-keyword">in</span> Scope C have access to variables defined <span class="hljs-keyword">in</span> Scope B? YES
+    </div></code></pre>
+    <ol start="4">
+    <li>What will be printed by the following (answer without running it)?</li>
+    </ol>
+    <pre class="hljs"><code><div><span class="hljs-keyword">var</span> x = <span class="hljs-number">9</span>;
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunction</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> x * x;
+    }
+    <span class="hljs-built_in">document</span>.write(myFunction());
+    x = <span class="hljs-number">5</span>;
+    <span class="hljs-built_in">document</span>.write(myFunction());
+    </div></code></pre>
+    <pre class="hljs"><code><div>-- Answer
+    -- 81
+    -- 25
+    </div></code></pre>
+    <ol start="5">
+    <li></li>
+    </ol>
+    <pre class="hljs"><code><div><span class="hljs-keyword">var</span> foo = <span class="hljs-number">1</span>;
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">if</span> (!foo) {
+            <span class="hljs-keyword">var</span> foo = <span class="hljs-number">10</span>;
+        }
+        alert(foo);
+    }
+    bar();
+    What will the alert print out? (Answer without running the code. Remember <span class="hljs-string">"hoisting"</span>.)?
+    </div></code></pre>
+    <pre class="hljs"><code><div>-- Answer
+    -- 1
+    </div></code></pre>
+    <ol start="6">
+    <li>Consider the following definition of an add( ) function to increment a counter variable:</li>
+    </ol>
+    <pre class="hljs"><code><div><span class="hljs-keyword">var</span> add = (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> counter = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">return</span> counter += <span class="hljs-number">1</span>;
+        }
+    })();
+    </div></code></pre>
+    <pre class="hljs"><code><div>Modify the above module to define a count object with two methods: add( ) and reset( ). The count.add( ) method adds one to the counter (as above). The count.reset( ) method sets the counter to 0.
+    </div></code></pre>
+    <pre class="hljs"><code><div><span class="hljs-keyword">var</span> CounterModule = (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> counter = <span class="hljs-number">0</span>;
+    
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">return</span> counter++;
+        }
+    
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reset</span>(<span class="hljs-params"></span>) </span>{
+            counter = <span class="hljs-number">0</span>;
+        }
+    
+        <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">add</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+              <span class="hljs-keyword">return</span> add();
+            }, <span class="hljs-attr">reset</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+              <span class="hljs-keyword">return</span> reset();
+            }
+        }
+    }());
+    </div></code></pre>
+    <ol start="7">
+    <li>In the definition of add( ) shown in question 6, identify the "free" variable. In the context of a function closure, what is a "free" variable?</li>
+    </ol>
+    <pre class="hljs"><code><div>-- Answer
+    -- Free variable is `counter`
+    </div></code></pre>
+    <ol start="8">
+    <li>The add( ) function defined in question 6 always adds 1 to the counter each time it is called. Write a definition of a function make_adder(inc), whose return value is an add function with increment value inc (instead of 1). Here is an example of using this function:</li>
+    </ol>
+    <pre class="hljs"><code><div>add5 = make_adder(<span class="hljs-number">5</span>);
+    add5( ); add5( ); add5( ); <span class="hljs-comment">// final counter value is 15</span>
+    add7 = make_adder(<span class="hljs-number">7</span>);
+    add7( ); add7( ); add7( ); <span class="hljs-comment">// final counter value is 21</span>
+    </div></code></pre>
+    <pre class="hljs"><code><div>-- Answer
+    
+    </div></code></pre>
+    <ol start="9">
+    <li>Suppose you are given a file of Javascript code containing a list of many function and variable declarations. All of these function and variable names will be added to the Global Javascript namespace. What simple modification to the Javascript file can remove all the names from the Global namespace?</li>
+    </ol>
+    <pre class="hljs"><code><div>-- Answer
+    -- Group the methods and variables to modules, reduce the scope from global to local.
+    </div></code></pre>
+    <ol start="10">
+    <li>Using the Revealing Module Pattern, write a Javascript definition of a Module that creates an Employee Object with the following fields and methods:</li>
+    </ol>
+    <pre class="hljs"><code><div>Private Field: name
+    Private Field: age
+    Private Field: salary
+    Public Method: setAge(newAge)
+    Public Method: setSalary(newSalary)
+    Public Method: setName(newName)
+    Private Method: getAge( )
+    Private Method: getSalary( )
+    Private Method: getName( )
+    Public Method: increaseSalary(percentage) <span class="hljs-comment">// uses private getSalary( )</span>
+    Public Method: incrementAge( ) <span class="hljs-comment">// uses private getAge( )</span>
+    </div></code></pre>
+    <pre class="hljs"><code><div><span class="hljs-keyword">var</span> Employee = (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> name;
+        <span class="hljs-keyword">var</span> age;
+        <span class="hljs-keyword">var</span> salary;
+    
+        <span class="hljs-keyword">var</span> setAge = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">age</span>) </span>{
+            <span class="hljs-keyword">this</span>.age = age;
+        };
+    
+        <span class="hljs-keyword">var</span> setSalary = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">salary</span>) </span>{
+            <span class="hljs-keyword">this</span>.salary = salary;
+        };
+    
+        <span class="hljs-keyword">var</span> setName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name</span>) </span>{
+            <span class="hljs-keyword">this</span>.name = name;
+        };
+    
+        <span class="hljs-keyword">var</span> getAge = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.age;
+        };
+    
+        <span class="hljs-keyword">var</span> getSalary = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.salary;
+        };
+    
+        <span class="hljs-keyword">var</span> getName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.name;
+        };
+    
+        <span class="hljs-keyword">var</span> increaseSalary = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">percentage</span>) </span>{
+            <span class="hljs-keyword">if</span> (percentage) {
+              <span class="hljs-keyword">this</span>.salary = <span class="hljs-keyword">this</span>.salary * (<span class="hljs-number">100</span> + percentage/<span class="hljs-number">100</span>);
+            }
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.salary;
+        };
+    
+        <span class="hljs-keyword">var</span> incrementAge = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">this</span>.age ++;
+        };
+    
+        <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">setAge</span>: setAge,
+            <span class="hljs-attr">setSalary</span>: setSalary,
+            <span class="hljs-attr">setName</span>: setName,
+            <span class="hljs-attr">increaseSalary</span>: increaseSalary,
+            <span class="hljs-attr">incrementAge</span>: incrementAge,
+        };
+    }());
+    </div></code></pre>
+    <ol start="11">
+    <li>Rewrite your answer to Question 10 using the Anonymous Object Literal Return Pattern.</li>
+    </ol>
+    <pre class="hljs"><code><div><span class="hljs-keyword">var</span> Employee = (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> name;
+        <span class="hljs-keyword">var</span> age;
+        <span class="hljs-keyword">var</span> salary;
+    
+        <span class="hljs-keyword">var</span> setAge = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">age</span>) </span>{
+            <span class="hljs-keyword">this</span>.age = age;
+        };
+    
+        <span class="hljs-keyword">var</span> setSalary = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">salary</span>) </span>{
+            <span class="hljs-keyword">this</span>.salary = salary;
+        };
+    
+        <span class="hljs-keyword">var</span> setName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name</span>) </span>{
+            <span class="hljs-keyword">this</span>.name = name;
+        };
+    
+        <span class="hljs-keyword">var</span> getAge = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.age;
+        };
+    
+        <span class="hljs-keyword">var</span> getSalary = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.salary;
+        };
+    
+        <span class="hljs-keyword">var</span> getName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.name;
+        };
+    
+        <span class="hljs-keyword">var</span> increaseSalary = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">percentage</span>) </span>{
+            <span class="hljs-keyword">if</span> (percentage) {
+              <span class="hljs-keyword">this</span>.salary = <span class="hljs-keyword">this</span>.salary * (<span class="hljs-number">100</span> + percentage/<span class="hljs-number">100</span>);
+            }
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.salary;
+        };
+    
+        <span class="hljs-keyword">var</span> incrementAge = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">this</span>.age ++;
+        };
+    
+        <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">setAge</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">age</span>) </span>{
+                <span class="hljs-keyword">return</span> setAge(age);
+            },
+            <span class="hljs-attr">setSalary</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">salary</span>) </span>{
+                <span class="hljs-keyword">return</span> setSalary(salary);
+            },
+            <span class="hljs-attr">setName</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">name</span>) </span>{
+                <span class="hljs-keyword">return</span> setName(name);
+            },
+            <span class="hljs-attr">increaseSalary</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">percentage</span>) </span>{
+                <span class="hljs-keyword">return</span> increaseSalary(percentage);
+            },
+            <span class="hljs-attr">incrementAge</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+                <span class="hljs-keyword">return</span> incrementAge();
+            },
+        };
+    }());
+    </div></code></pre>
+    <ol start="12">
+    <li>Rewrite your answer to Question 10 using the Locally Scoped Object Literal Pattern.</li>
+    </ol>
+    <pre class="hljs"><code><div><span class="hljs-keyword">var</span> EmployeeModule = (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> Employee = {
+            <span class="hljs-attr">name</span>: <span class="hljs-string">''</span>,
+            <span class="hljs-attr">age</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">salary</span>: <span class="hljs-number">0</span>,
+        };
+    
+        <span class="hljs-keyword">var</span> getAge = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.age;
+        };
+    
+        <span class="hljs-keyword">var</span> getSalary = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.salary;
+        };
+    
+        <span class="hljs-keyword">var</span> getName = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.name;
+        };
+    
+        Employee.setAge = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">age</span>) </span>{
+            <span class="hljs-keyword">this</span>.age = age;
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.age;
+        };
+    
+        Employee.setSalary = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">salary</span>) </span>{
+            <span class="hljs-keyword">this</span>.salary = salary;
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.salary;
+        };
+    
+        Employee.setName = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">name</span>) </span>{
+            <span class="hljs-keyword">this</span>.name = name;
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.same;
+        };
+    
+        Employee.increaseSalary = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">percentage</span>) </span>{
+            <span class="hljs-keyword">if</span> (percentage) {
+                <span class="hljs-keyword">this</span>.salary = <span class="hljs-keyword">this</span>.salary * (<span class="hljs-number">100</span> + percentage/<span class="hljs-number">100</span>);
+            }
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.salary;
+        };
+    
+        Employee.incrementAge = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.age) {
+                <span class="hljs-keyword">this</span>.age ++;
+            }
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.age;
+        };
+    
+        <span class="hljs-keyword">return</span> Employee;
+    }());
+    </div></code></pre>
+    <ol start="13">
+    <li>Write a few Javascript instructions to extend the Module of Question 10 to have a public address field and public methods setAddress(newAddress) and getAddress().</li>
+    </ol>
+    <pre class="hljs"><code><div>Employee.setAddress = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">newAddress</span>) </span>{
+        <span class="hljs-keyword">this</span>.address = newAddress;
+        };
+    
+        Employee.getAddress = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+          <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.address;
+        }
+    }
+    </div></code></pre>
+    <ol start="14">
+    <li>What is the output of the following code?</li>
+    </ol>
+    <pre class="hljs"><code><div><span class="hljs-keyword">const</span> promise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+        reject(<span class="hljs-string">"Hattori"</span>);
+        });
+    promise.then(<span class="hljs-function"><span class="hljs-params">val</span> =&gt;</span> alert(<span class="hljs-string">"Success: "</span> + val))
+     .catch(<span class="hljs-function"><span class="hljs-params">e</span> =&gt;</span> alert(<span class="hljs-string">"Error: "</span> + e));
+    </div></code></pre>
+    <pre class="hljs"><code><div>-- Answer
+    -- Display alert dialog with text "Error: Hattori"
+    </div></code></pre>
+    <ol start="15">
+    <li>What is the output of the following code?</li>
+    </ol>
+    <pre class="hljs"><code><div><span class="hljs-keyword">const</span> promise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+        resolve(<span class="hljs-string">"Hattori"</span>);
+        setTimeout(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span> reject(<span class="hljs-string">"Yoshi"</span>), <span class="hljs-number">500</span>);
+    });
+    promise.then(<span class="hljs-function"><span class="hljs-params">val</span> =&gt;</span> alert(<span class="hljs-string">"Success: "</span> + val))
+          .catch(<span class="hljs-function"><span class="hljs-params">e</span> =&gt;</span> alert(<span class="hljs-string">"Error: "</span> + e));
+    </div></code></pre>
+    <pre class="hljs"><code><div>-- Answer
+    -- Display alert dialog with text "Success: Hattori"
+    </div></code></pre>
+    <ol start="16">
+    <li>What is the output of the following code?</li>
+    </ol>
+    <pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">job</span>(<span class="hljs-params">state</span>) </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>{
+                <span class="hljs-keyword">if</span> (state) {
+                resolve(<span class="hljs-string">'success'</span>);
+                } <span class="hljs-keyword">else</span> {
+                reject(<span class="hljs-string">'error'</span>);
+                }
+            });
+        }
+        <span class="hljs-keyword">let</span> promise = job(<span class="hljs-literal">true</span>);
+        promise.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>{
+            <span class="hljs-built_in">console</span>.log(data);
+            <span class="hljs-keyword">return</span> job(<span class="hljs-literal">false</span>);
+        }).catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{
+            <span class="hljs-built_in">console</span>.log(error);
+            <span class="hljs-keyword">return</span> <span class="hljs-string">'Error caught'</span>;
+        }
+    );
+    </div></code></pre>
+    <pre class="hljs"><code><div>-- Answer
+    -- Out "success" then "error"
+    </div></code></pre>
+    
+    
+    
+    </body>
+</html>

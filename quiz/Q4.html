@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1. Rewrite the JSP page in the first demo (forEach) to use scripting instead of the JSTL forEach.</li>
+        <li>
+            &lt;%
+            List styles = (List)request.getAttribute(“styles”);
+              Iterator it = styles.iterator();
+              while(it.hasNext()) {
+              out.print(“<br>try: “ + it.next());
+            }
+          %&gt;
+
+        </li>
+        <li>2. How do custom tags relate to JSTL?</li>
+        <li>JSTL: tandard custom tags for JSPs, helps to reduce scripting. They are custom tag api, but have become a standard library, essentially a part of JSP language.</li>
+        <li>3. What is the role of the URI in the TLD and the taglib directive?</li>
+        <li>Link to TLD (descriptor) to validate JSP.</li>
+        <li>4. What is a tag handler class?</li>
+        <li>Extends the tag support framework class – `javax.servlet.jsp.tagext.TagSupport` which overrides method public void doTag() throws JspException, IOException</li>
+        <li>5. What is the role of attribute setters in a tag handler class?</li>
+        <li>Expose the attributes to be set to the custom tag.</li>
+        <li>6. What is the role of the doTag() method in a tag handler class?</li>
+        <li>To output the content of the custom tag.</li>
+        <li>7. What does the operation getJspContext().getOut().write(“Hi Bob”) do when called in a doTag() method?</li>
+        <li>Out the text "Hi Bob"</li>
+        <li>8. What does the operation getJspBody().invoke(null) do when called in a doTag() method?</li>
+        <li>Supporting tag bodies does not introduce any structural changes to the tag handler class. You still need to include setter methods for any attributes you are planning to declare and use. You still need to override the doTag method. To output the body content of the tag, inside the doTag method you need to acquire the JspFragment instance representing the body of the tag by calling the getJspBody method, then using its invoke method passing it null as its argument. Usually, this is done in a single step as follows:
+            The container processes the JSP content found in the body of the tag just like any other JSP page content. If the invoke method is passed null as its argument, the resulting output of that JSP content is passed verbatim to the client. Therefore, the doTag method has no way of accessing the tag body output. All it can do is pass it along. We show how to access and modify the output of the tag body content before it's sent to the client in Section 8.1 (Manipulating Tag Body). It's important to stress, however, that it is the output resulting from the execution of the JSP code in the tag body, not the JSP code itself, that is passed to the client.</li>
+    </ul>
+</body>
+</html>

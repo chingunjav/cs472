@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <b>1. What is the difference between the following 2 statements?</b>
+    <p> setTimeout(booyah, 2000);<br> setTimeout(booyah(), 2000); </p>
+    <p>Ans: * setTimeout(booyah, 2000); <br>
+        The function `booyah` is executed after 2 seconds<br>
+        * setTimeout(booyah(), 2000);<br>
+         The function `booyah` is executed right after setTimeout is executed.</p>
+    <b>2. What do the following 2 alerts display (answer without running the code)?</b>
+    <p> var myfunc = function(a, x) { <br>
+        return a * x;<br>
+        };<br>
+        var x = myfunc(2, 3); <br>
+        var y = myfunc; <br>
+        alert(x); <br>
+        alert(y(2,3));<br>
+         </p>
+         <p>Ans: Both 2 alerts display value 6</p>
+    <b>3. Write functions booyah1 and booyah2 so that in both cases below, an alert box comes up after 2 seconds that says “BOOYAH!”</b>
+    <p>
+        setTimeout(booyah1, 2000);<br> setTimeout(booyah2(), 2000);
+    </p>
+    <p>Ans: <br>
+            function booyah1() { <br>
+                alert('BOOYAH!');<br>
+              }<br>
+              
+              function booyah2() {<br>
+                booyah1();<br>
+              }<br>
+    </p>
+    <b>4. What is "Unobtrusive Javascript"? What is the practical application of Unobtrusive Javascript (and the reasons for using it)?</b>
+    <p> General approach to the use of JavaScript in web pages. Though the term is not formally defined, its basic principles are generally understood to include: Separation of functionality (the "behavior layer") from a Web page's structure/content and presentation. <br>
+            In HTML: <br>
+            &lt;a href="somewhere.html" class="popup"&gt;Go somewhere&lt;/a&gt;&lt;&gt; <br>
+            
+            In JavaScript:<br>
+            var x = document.getElementsByClassName('popup'); <br>
+            for (var i=0;i &lt; x.length;i++=1) { <br>
+                x[i].onclick = function () {<br>
+                    window.open(this.href,'popup','arguments');<br>
+                    return false;<br>
+                }<br>
+            }<br>
+        </p>
+</body>
+</html>

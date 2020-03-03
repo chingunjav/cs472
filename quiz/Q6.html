@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h3 id="javascript-scope-exercises">Javascript Scope Exercises</h3>
+    <ol>
+    <li>Determine what this Javascript code will print out (without running it):</li>
+    </ol>
+    <pre class="hljs"><code><div>x = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">var</span> a = <span class="hljs-number">5</span>;
+    <span class="hljs-keyword">var</span> b = <span class="hljs-number">10</span>;
+    <span class="hljs-keyword">var</span> c = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a, b, c</span>) </span>{
+      <span class="hljs-keyword">var</span> x = <span class="hljs-number">10</span>;
+      <span class="hljs-built_in">document</span>.write(x);
+      <span class="hljs-built_in">document</span>.write(a);
+      <span class="hljs-keyword">var</span> f = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a, b, c</span>) </span>{
+          b = a;
+          <span class="hljs-built_in">document</span>.write(b);
+          b = c;
+          <span class="hljs-keyword">var</span> x = <span class="hljs-number">5</span>;
+        }
+      f(a,b,c);
+      <span class="hljs-built_in">document</span>.write(b);
+    }
+    
+    c(<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>);
+    <span class="hljs-built_in">document</span>.write(b);
+    <span class="hljs-built_in">document</span>.write(x);
+    }
+    </div></code></pre>
+    <pre class="hljs"><code><div>Print -- x -- 10
+    Print -- a -- 8
+    Print -- b -- 8
+    Print -- b -- 10
+    Print -- b -- 10
+    Print -- x -- 1
+    </div></code></pre>
+    <ol start="2">
+    <li>What is the difference between a method and function?</li>
+    </ol>
+    <pre class="hljs"><code><div>A method is a function that belongs to a class. In JavaScript, however, a method is a function that belongs to an object.
+    </div></code></pre>
+    <ol start="3">
+    <li>What does 'this' refer to when used in a Java method?</li>
+    </ol>
+    <pre class="hljs"><code><div>Inside an object's method, the object refers to itself as this.
+    </div></code></pre>
+    <ol start="4">
+    <li>What does 'this' refer to when used in a JavaScript method?</li>
+    </ol>
+    <pre class="hljs"><code><div>In JavaScript this always refers to the "owner" of the function we're executing, or rather, to the object that a function is a method of. When we define our faithful function doSomething() in a page, its owner is the page, or rather, the window object (or global object) of JavaScript.
+    </div></code></pre>
+    <ol start="5">
+    <li>What does 'this' refer to when used in a JavaScript constructor function?</li>
+    </ol>
+    <pre class="hljs"><code><div>The value of this, when used in an object, is the object itself.
+    
+    In a constructor function this does not have a value. It is a substitute for the new object. The value of this will become the new object when a new object is created.
+    </div></code></pre>
+    <ol start="6">
+    <li>Assume object x is the prototype for object y in Javascript. Object x has a method f( ) containing keyword <code>this</code>.
+    When f is called by x.f( ), what does <code>this</code> refer to?</li>
+    </ol>
+    <pre class="hljs"><code><div>Refer to the prototype x
+    </div></code></pre>
+    <ol start="7">
+    <li>What is a free variable in JavaScript?</li>
+    </ol>
+    <pre class="hljs"><code><div>A variable referred to by a function that is not one of its parameters or local variables.
+    </div></code></pre>
+    <ol start="8">
+    <li>Create an object that has properties with name = "fred" and major="music" and a property that is a function that takes 2 numbers and returns the smallest of the two, or the square of the two if they are equal.</li>
+    </ol>
+    <pre class="hljs"><code><div><span class="hljs-keyword">var</span> Student = {
+      <span class="hljs-attr">name</span>: <span class="hljs-string">'fred'</span>,
+      <span class="hljs-attr">major</span>: <span class="hljs-string">'music'</span>,
+      <span class="hljs-attr">foo</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x, y</span>) </span>{
+        <span class="hljs-keyword">if</span> (x === y) {
+          <span class="hljs-keyword">return</span> <span class="hljs-number">4</span> * x * x;
+        } <span class="hljs-keyword">else</span> {
+          <span class="hljs-keyword">if</span> (x &lt; y&gt;) {
+            <span class="hljs-keyword">return</span> x;
+          } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> y;
+          }
+        }
+      }
+    }
+    </div></code></pre>
+    <ol start="9">
+    <li>Write Javascript code for creating three Employee objects using the "new" keyword and a constructor function. Employee objects have the following fields: name, salary, position.</li>
+    </ol>
+    <pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Employee</span>(<span class="hljs-params">name, salary, position</span>) </span>{
+      <span class="hljs-keyword">this</span>.name = name;
+      <span class="hljs-keyword">this</span>.salary = salary;
+      <span class="hljs-keyword">this</span>.position = position;
+    }
+    
+    <span class="hljs-keyword">var</span> emp1 = <span class="hljs-keyword">new</span> Employee(<span class="hljs-string">'A'</span>, <span class="hljs-number">4000</span>, <span class="hljs-string">'Developer'</span>);
+    <span class="hljs-keyword">var</span> emp2 = <span class="hljs-keyword">new</span> Employee(<span class="hljs-string">'B'</span>, <span class="hljs-number">5000</span>, <span class="hljs-string">'DevOps'</span>);
+    <span class="hljs-keyword">var</span> emp3 = <span class="hljs-keyword">new</span> Employee(<span class="hljs-string">'C'</span>, <span class="hljs-number">10000</span>, <span class="hljs-string">'Technical Architect'</span>);
+    </div></code></pre>
+    <ol start="10">
+    <li>Write a Javascript function that takes any number of input arguments and returns the product of the arguments.</li>
+    </ol>
+    <pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params">...args</span>) </span>{
+      <span class="hljs-keyword">if</span> (args &amp;&amp; args.length) {
+        <span class="hljs-keyword">return</span> args.reduce( <span class="hljs-function">(<span class="hljs-params">accumulator, currentValue, currentIndex, array</span>) =&gt;</span>
+          accumulator * currentValue );
+      }
+      <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    }
+    </div></code></pre>
+    <ol start="11">
+    <li>Write an arrow function that returns the maximum of its three input arguments.</li>
+    </ol>
+    <pre class="hljs"><code><div><span class="hljs-keyword">var</span> foo = <span class="hljs-function">(<span class="hljs-params">a, b, c</span>) =&gt;</span> {
+      <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.max(a, b, c);
+    }
+    </div></code></pre>
+    
+    
+    
+    </body>
+</html>
