@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<!-- saved from url=(0053)http://mumstudents.org/~610481/ASCIImation/ascii.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>ASCIImation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/ascii.css" type="text/css" rel="stylesheet">
+    <script src="../js/animations.js" type="text/javascript"></script><script data-dapp-detection="">
+(function() {
+  let alreadyInsertedMetaTag = false
+
+  function __insertDappDetected() {
+    if (!alreadyInsertedMetaTag) {
+      const meta = document.createElement('meta')
+      meta.name = 'dapp-detected'
+      document.head.appendChild(meta)
+      alreadyInsertedMetaTag = true
+    }
+  }
+
+  if (window.hasOwnProperty('web3')) {
+    // Note a closure can't be used for this var because some sites like
+    // www.wnyc.org do a second script execution via eval for some reason.
+    window.__disableDappDetectionInsertion = true
+    // Likely oldWeb3 is undefined and it has a property only because
+    // we defined it. Some sites like wnyc.org are evaling all scripts
+    // that exist again, so this is protection against multiple calls.
+    if (window.web3 === undefined) {
+      return
+    }
+    __insertDappDetected()
+  } else {
+    var oldWeb3 = window.web3
+    Object.defineProperty(window, 'web3', {
+      configurable: true,
+      set: function (val) {
+        if (!window.__disableDappDetectionInsertion)
+          __insertDappDetected()
+        oldWeb3 = val
+      },
+      get: function () {
+        if (!window.__disableDappDetectionInsertion)
+          __insertDappDetected()
+        return oldWeb3
+      }
+    })
+  }
+})()</script>
+    <script src="./ASCIImation_files/ascii.js" type="text/javascript"></script>
+</head>
+
+<body>
+<header>CSE 190 M ASCII Animation Viewer</header>
+<div class="container">
+    <textarea id="text-area" cols="80" rows="20"></textarea>
+    <fieldset>
+        <legend>Play Controls:</legend>
+        <button id="start">Start</button>
+        <button disabled="" id="stop">Stop</button>
+    </fieldset>
+
+    <fieldset>
+        <legend>Animation:</legend>
+        <select id="animation">
+            <option selected="selected" value="Blank">Blank</option>
+            <option value="Exercise">Exercise</option>
+            <option value="Juggler">Juggler</option>
+            <option value="Bike">Bike</option>
+            <option value="Dive">Dive</option>
+        </select>
+    </fieldset>
+    <fieldset>
+        <legend>Size:</legend>
+        <select id="fontsize">
+            <option value="7pt">Tiny</option>
+            <option value="10pt">Small</option>
+            <option value="12pt" selected="">Medium</option>
+            <option value="16pt">Large</option>
+            <option value="24pt">Extra Large</option>
+            <option value="32pt">XXL</option>
+            <option value="Tiny">Tiny</option>
+        </select>
+    </fieldset>
+    <fieldset>
+        <legend>Speed:</legend>
+        <label><input id="turbo" type="checkbox">Turbo</label>
+    </fieldset>
+</div>
+<div id="validate">
+    <a href="https://validator.w3.org/check/referer">
+        <img src="./ASCIImation_files/w3c-html.png" alt="html validator">
+    </a>
+    <br>
+    <a href="https://jigsaw.w3.org/css-validator/check/referer">
+        <img src="./ASCIImation_files/w3c-css.png" alt="Valid CSS!"></a><br>
+    <a href="https://webster.cs.washington.edu/jslint?referer">
+        <img src="./ASCIImation_files/jshint-small.png" alt="JavaScript Lint">
+    </a>
+</div>
+
+<script>
+  //  window.onload = function () {
+        const startButton = document.getElementById("start");
+        const stopButton = document.getElementById("stop");
+        const animation = document.getElementById("animation");
+        const fontSize = document.getElementById("fontsize");
+        const speed = document.getElementById("turbo");
+        startButton.onclick = onStartBtnClick;
+        stopButton.onclick = onStopBtnClick;
+        animation.onchange = animationChanged;
+        fontSize.onchange = fontSizeChanged;
+        speed.onchange = speedChanged;
+ //   };
+
+
+
+</script>
+
+
+</body></html>
