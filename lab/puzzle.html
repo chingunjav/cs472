@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://mumstudents.org/~610481/Puzzle/ -->
+<html lang="en"><!--
+CSE 190 M, Homework 7: Fifteen Puzzle
+You should not modify fifteen.html.  Your JS code should work with an
+unmodified version of this file.
+--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Fifteen Puzzle</title>
+    
+    <!-- instructor-provided JavaScript files; do not modify -->
+    <script src="../js/jquery.min.js"></script><script data-dapp-detection="">
+(function() {
+  let alreadyInsertedMetaTag = false
+
+  function __insertDappDetected() {
+    if (!alreadyInsertedMetaTag) {
+      const meta = document.createElement('meta')
+      meta.name = 'dapp-detected'
+      document.head.appendChild(meta)
+      alreadyInsertedMetaTag = true
+    }
+  }
+
+  if (window.hasOwnProperty('web3')) {
+    // Note a closure can't be used for this var because some sites like
+    // www.wnyc.org do a second script execution via eval for some reason.
+    window.__disableDappDetectionInsertion = true
+    // Likely oldWeb3 is undefined and it has a property only because
+    // we defined it. Some sites like wnyc.org are evaling all scripts
+    // that exist again, so this is protection against multiple calls.
+    if (window.web3 === undefined) {
+      return
+    }
+    __insertDappDetected()
+  } else {
+    var oldWeb3 = window.web3
+    Object.defineProperty(window, 'web3', {
+      configurable: true,
+      set: function (val) {
+        if (!window.__disableDappDetectionInsertion)
+          __insertDappDetected()
+        oldWeb3 = val
+      },
+      get: function () {
+        if (!window.__disableDappDetectionInsertion)
+          __insertDappDetected()
+        return oldWeb3
+      }
+    })
+  }
+})()</script>
+
+    <!-- your files that you will write -->
+    <link href="../cs/fifteen.css" type="text/css" rel="stylesheet">
+    <script src="../js/fifteen.js"></script>
+</head>
+
+<body>
+<h1>CSE 190 M Fifteen Puzzle</h1>
+
+<p>
+    The goal of the fifteen puzzle is to un-jumble its fifteen squares
+    by repeatedly making moves that slide squares into the empty space.
+    How quickly can you solve it?
+</p>
+
+<div id="puzzlearea">
+    <!-- the following are the actual fifteen puzzle pieces -->
+    <div class="puzzlepiece" id="0_0" style="left: 0px; top: 0px; background-image: url(&quot;background.jpg&quot;); background-position: 0px 0px;">1</div>  <div class="puzzlepiece" id="1_0" style="left: 100px; top: 0px; background-image: url(&quot;background.jpg&quot;); background-position: -100px 0px;">2</div>  <div class="puzzlepiece" id="2_0" style="left: 200px; top: 0px; background-image: url(&quot;background.jpg&quot;); background-position: -200px 0px;">3</div>  <div class="puzzlepiece" id="3_0" style="left: 300px; top: 0px; background-image: url(&quot;background.jpg&quot;); background-position: -300px 0px;">4</div>
+    <div class="puzzlepiece" id="0_1" style="left: 0px; top: 100px; background-image: url(&quot;background.jpg&quot;); background-position: 0px -100px;">5</div>  <div class="puzzlepiece" id="1_1" style="left: 100px; top: 100px; background-image: url(&quot;background.jpg&quot;); background-position: -100px -100px;">6</div>  <div class="puzzlepiece" id="2_1" style="left: 200px; top: 100px; background-image: url(&quot;background.jpg&quot;); background-position: -200px -100px;">7</div>  <div class="puzzlepiece" id="3_1" style="left: 300px; top: 100px; background-image: url(&quot;background.jpg&quot;); background-position: -300px -100px;">8</div>
+    <div class="puzzlepiece" id="0_2" style="left: 0px; top: 200px; background-image: url(&quot;background.jpg&quot;); background-position: 0px -200px;">9</div>  <div class="puzzlepiece" id="1_2" style="left: 100px; top: 200px; background-image: url(&quot;background.jpg&quot;); background-position: -100px -200px;">10</div> <div class="puzzlepiece" id="2_2" style="left: 200px; top: 200px; background-image: url(&quot;background.jpg&quot;); background-position: -200px -200px;">11</div> <div class="puzzlepiece movablepiece" id="3_2" style="left: 300px; top: 200px; background-image: url(&quot;background.jpg&quot;); background-position: -300px -200px; cursor: move;">12</div>
+    <div class="puzzlepiece" id="0_3" style="left: 0px; top: 300px; background-image: url(&quot;background.jpg&quot;); background-position: 0px -300px;">13</div> <div class="puzzlepiece" id="1_3" style="left: 100px; top: 300px; background-image: url(&quot;background.jpg&quot;); background-position: -100px -300px;">14</div> <div class="puzzlepiece" id="2_3" style="left: 200px; top: 300px; background-image: url(&quot;background.jpg&quot;); background-position: -200px -300px;">15</div>
+</div>
+
+<p id="controls">
+    <button id="shufflebutton">Shuffle</button>
+</p>
+
+<p>
+    American puzzle author and mathematician Sam Loyd is often falsely
+    credited with creating the puzzle; indeed, Loyd claimed from 1891
+    until his death in 1911 that he invented it.
+    The puzzle was actually created around 1874 by Noyes Palmer Chapman,
+    a postmaster in Canastota, New York.
+</p>
+
+<div id="w3c">
+    <a href="http://validator.w3.org/check/referer">
+        <img src="../img/w3c-html.png" alt="Valid HTML5">
+    </a>
+    <a href="http://jigsaw.w3.org/css-validator/check/referer">
+        <img src="../img/w3c-css.png" alt="Valid CSS">
+    </a>
+    <a href="https://webster.cs.washington.edu/jslint?referer">
+        <img src="../img/jshint-small.png" alt="JavaScript Lint">
+    </a>
+</div>
+<script>
+    $(document).ready(function(){
+        Puzzle.init();
+        $('#shufflebutton').click(function(){
+            Puzzle.shuffle(100);
+        });
+    })
+</script>
+
+
+
+</body></html>
